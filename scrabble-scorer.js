@@ -38,7 +38,7 @@ function initialPrompt() {
    console.log("Let's play some scrabble!\n");
 
    let userWord = input.question("Please enter a word to score: ");
-   console.log(`The score for ${userWord} is ${scorerPrompt(userWord)}`);
+   console.log(`The score for "${userWord}" is ${scorerPrompt(userWord)}`);
    
 };
 
@@ -73,7 +73,6 @@ let scrabbleScorer = function(word) {
    word = word.toLowerCase();
 
    let score = 0;
-   
 
    for (let i = 0; i < word.length; i++) {
       score += newPointStructure[word[i]]
@@ -109,11 +108,13 @@ function scorerPrompt(word) {
    console.log(`${i} - ${scoringAlgorithms[i].name}: ${scoringAlgorithms[i].description}`)
 }
 
-let selectedAlg = input.question('Enter 0, 1, or 2: ') 
+let selectedAlg = input.question('Enter 0, 1, or 2: ')
+while(selectedAlg > 2 || selectedAlg < 0) {
+  selectedAlg = input.question('Invalid input! Please enter 0, 1, or 2: ')
+}
     
 return scoringAlgorithms[selectedAlg].scorerFunction(word); 
-      
-   
+
 }
 
 function transform(oldPointStructure) {
