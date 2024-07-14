@@ -73,7 +73,7 @@ let scrabbleScorer = function(word) {
    word = word.toLowerCase();
 
    let score = 0;
-   //let letter = " ";
+   
 
    for (let i = 0; i < word.length; i++) {
       score += newPointStructure[word[i]]
@@ -109,8 +109,10 @@ function scorerPrompt(word) {
    console.log(`${i} - ${scoringAlgorithms[i].name}: ${scoringAlgorithms[i].description}`)
 }
 
-let selectedArr = input.question('Enter 0, 1, or 2: ') 
-  return scoringAlgorithms[selectedArr].scorerFunction(word);
+let selectedAlg = input.question('Enter 0, 1, or 2: ') 
+    
+return scoringAlgorithms[selectedAlg].scorerFunction(word); 
+      
    
 }
 
